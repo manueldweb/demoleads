@@ -45,7 +45,7 @@
   </main>
 
   <script>
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwjItsrPNH1KgGvBpQJhaWiQv92cvp7rHphjXShM4AnjxetsFVLbBWq3HOsB8fTZ9rh/exec";
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwhQXBDxleSIw7whiDpWZNK57Ic4qR5vn9YIYZG3aomq2KXzAQKIqB5pmnn6iS51dp1/exec";
 
     const params = new URLSearchParams(window.location.search);
     const citaParam = params.get("cita");
@@ -55,21 +55,39 @@
       const banner = document.getElementById("bannerCita");
       const texto = document.getElementById("textoBannerCita");
       banner.classList.remove("hidden");
-      texto.innerHTML = `📅 Mostrando agenda${fechaParam ? ` desde <strong>${fechaParam}</strong>` : ""}${citaParam ? ` • Referencia: <strong>${citaParam}</strong>` : ""}.`;
+      texto.innerHTML = `📅 Cita agendada${fechaParam ? ` para el <strong>${fechaParam}</strong>` : ""}${citaParam ? ` • Código: <strong>${citaParam}</strong>` : ""} (marcada en destacado en el calendario).`;
     }
 
     document.addEventListener("DOMContentLoaded", async () => {
       const calendarEl = document.getElementById("calendar");
       let eventosCargados = [];
+      let horaScroll = "09:00:00";
 
       try {
         const res = await fetch(GOOGLE_SCRIPT_URL);
         const data = await res.json();
-        eventosCargados = (data.events || []).map(ev => ({
-          ...ev,
-          backgroundColor: ev.id === citaParam ? "#0f172a" : "#0d9488",
-          borderColor: ev.id === citaParam ? "#0f172a" : "#0d9488"
-        }));
+
+        eventosCargados = (data.events || []).map(ev => {
+          const esCitaMarcada = citaParam && String(ev.id) === String(citaParam);
+
+          if (esCitaMarcada && ev.start) {
+            const fechaEv = new Date(ev.start);
+            if (!isNaN(fechaEv.getTime())) {
+              const hh = String(fechaEv.getHours()).padStart(2, "0");
+              const mm = String(fechaEv.getMinutes()).padStart(2, "0");
+              horaScroll = `${Math.max(0, fechaEv.getHours() - 1).toString().padStart(2, "0")}:${mm}:00`;
+            }
+          }
+
+          return {
+            ...ev,
+            title: esCitaMarcada ? `★ RESERVADA: ${ev.title}` : ev.title,
+            backgroundColor: esCitaMarcada ? "#d97706" : "#0d9488",
+            borderColor: esCitaMarcada ? "#92400e" : "#0f766e",
+            textColor: "#ffffff",
+            classNames: esCitaMarcada ? ["ring-2", "ring-amber-300", "font-bold"] : []
+          };
+        });
       } catch (e) {
         console.error("Error cargando eventos:", e);
       }
@@ -77,6 +95,7 @@
       const calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: window.innerWidth < 640 ? "timeGridDay" : "timeGridWeek",
         initialDate: fechaParam || undefined,
+        scrollTime: horaScroll,
         locale: "es",
         slotMinTime: "08:00:00",
         slotMaxTime: "20:00:00",
@@ -90,7 +109,10 @@
         },
         events: eventosCargados,
         eventClick: function(info) {
-          alert(`Cita: ${info.event.title}\nEstado: ${info.event.extendedProps.estado || "Confirmada"}`);
+          const inicio = info.event.start
+            ? info.event.start.toLocaleString("es-VE", { dateStyle: "medium", timeStyle: "short" })
+            : "";
+          alert(`Cita: ${info.event.title}\nFecha y hora: ${inicio}\nEstado: ${info.event.extendedProps.estado || "Confirmada"}`);
         }
       });
 
