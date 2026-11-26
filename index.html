@@ -1,4 +1,77 @@
-<!-- REEMPLAZA EL <form id="leadForm"> POR ESTE -->
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clínica Aura | Especialistas en Estética y Salud</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-teal-600 selection:text-white">
+
+  <!-- Barra Superior Minimalista -->
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/70">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-teal-600 flex items-center justify-center text-white font-bold text-lg">A</div>
+        <span class="font-bold text-lg tracking-tight text-slate-900">Clínica <span class="text-teal-600">Aura</span></span>
+      </div>
+      <a href="#agendar" class="text-sm font-semibold bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded-full transition shadow-sm">
+        Agendar Valoración
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero + Formulario de Captura Directa -->
+  <section id="agendar" class="pt-10 pb-16 sm:pt-16 sm:pb-24 px-4 sm:px-6">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      
+      <!-- Columna Izquierda: Propuesta de Valor -->
+      <div class="lg:col-span-7 space-y-6">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-50 border border-teal-200 text-teal-700 text-xs font-semibold">
+          <span class="w-2 h-2 rounded-full bg-teal-500 animate-pulse"></span>
+          Cupos limitados esta semana • Atención personalizada
+        </div>
+        
+        <h1 class="text-3xl sm:text-5xl font-bold text-slate-900 leading-tight tracking-tight">
+          Recupera tu confianza con resultados <span class="text-teal-600">naturales y seguros.</span>
+        </h1>
+        
+        <p class="text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl">
+          Diagnóstico especializado y protocolos avanzados sin tiempos de espera. Reserva tu evaluación hoy y recibe un plan diseñado exactamente para ti.
+        </p>
+
+        <!-- Prueba social rápida -->
+        <div class="grid grid-cols-3 gap-4 pt-2 border-t border-slate-200/80 max-w-md">
+          <div>
+            <p class="text-2xl font-bold text-slate-900">+1,200</p>
+            <p class="text-xs text-slate-500">Pacientes felices</p>
+          </div>
+          <div>
+            <p class="text-2xl font-bold text-slate-900">4.9 ★</p>
+            <p class="text-xs text-slate-500">Calificación media</p>
+          </div>
+          <div>
+            <p class="text-2xl font-bold text-slate-900">100%</p>
+            <p class="text-xs text-slate-500">Certificados</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna Derecha: Tarjeta de Conversión -->
+      <div class="lg:col-span-5">
+        <div class="bg-white rounded-2xl shadow-xl shadow-slate-200/60 border border-slate-100 p-6 sm:p-8">
+          <div class="mb-6">
+            <h2 class="text-xl font-bold text-slate-900">Reserva tu cita prioritaria</h2>
+            <p class="text-sm text-slate-500 mt-1">Completa tus datos y te confirmamos al instante por WhatsApp.</p>
+          </div>
+
+          <!-- REEMPLAZA EL <form id="leadForm"> POR ESTE -->
 <form id="leadForm" class="space-y-4">
   <div>
     <label for="nombre" class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1.5">Nombre completo</label>
@@ -75,9 +148,64 @@
   </p>
 </form>
 
-<!-- REEMPLAZA EL <script> DEL FINAL POR ESTE -->
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Sección 2: 3 Pilares Diferenciales (Corta y visual) -->
+  <section class="py-14 bg-white border-y border-slate-200/70 px-4 sm:px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center max-w-xl mx-auto mb-10">
+        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">¿Por qué elegirnos?</h2>
+        <p class="text-sm text-slate-500 mt-2">Combinamos tecnología clínica de vanguardia con atención humana sin prisas.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100">
+          <div class="w-10 h-10 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center font-bold mb-4">01</div>
+          <h3 class="font-bold text-slate-900 mb-2">Diagnóstico Personalizado</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">Evaluamos tu caso de forma integral antes de recomendar cualquier procedimiento.</p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100">
+          <div class="w-10 h-10 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center font-bold mb-4">02</div>
+          <h3 class="font-bold text-slate-900 mb-2">Tecnología No Invasiva</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">Equipos aprobados internacionalmente para garantizar confort y rápida recuperación.</p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100">
+          <div class="w-10 h-10 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center font-bold mb-4">03</div>
+          <h3 class="font-bold text-slate-900 mb-2">Seguimiento Post-Cita</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">Acompañamiento directo por nuestro equipo médico durante todo tu proceso.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección 3: Cierre Rápido (CTA Final) -->
+  <section class="py-14 px-4 sm:px-6">
+    <div class="max-w-4xl mx-auto bg-slate-900 rounded-3xl p-8 sm:p-12 text-center text-white shadow-xl">
+      <h2 class="text-2xl sm:text-3xl font-bold mb-3">¿Listo para dar el primer paso?</h2>
+      <p class="text-slate-300 text-sm sm:text-base max-w-lg mx-auto mb-6">
+        Agenda hoy mismo y asegura tu espacio con nuestros especialistas sin filas ni demoras.
+      </p>
+      <a href="#agendar" class="inline-block bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-sm px-8 py-3.5 rounded-xl transition">
+        Reservar mi lugar ahora
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer Mínimo -->
+  <footer class="py-8 text-center text-xs text-slate-400 border-t border-slate-200/70">
+    <p>© 2026 Clínica Aura • Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- Lógica de Automatización: Envío a Google Sheets + Salto a WhatsApp -->
+  <!-- REEMPLAZA EL <script> DEL FINAL POR ESTE -->
 <script>
-  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/TU_ID_DE_SCRIPT_AQUI/exec";
+  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz_JPauYfYJTZ5Z-1NLyI7RQ8PWWcZCIb0iK2v0BtYYQsHZgYOKaY2LL7aNhBsTd2mS/exec";
 
   const form = document.getElementById("leadForm");
   const submitBtn = document.getElementById("submitBtn");
@@ -154,3 +282,23 @@
     }
   });
 </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
